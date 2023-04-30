@@ -1,23 +1,24 @@
 import React, {ChangeEvent} from "react";
 import {ChangeInputValue} from "./ChangeInputValue";
+import {useDispatch} from "react-redux";
+import {setMaxCountAC, setMinCountAC} from "./store/count-reducer";
+import {setIsActiveModeAC} from "./store/mode-reducer";
 
 type SettingValueType = {
-    setMinCount: (count: number) => void
-    setMaxCount: (count: number) => void
-    setIsActive: (values: boolean) => void
     minInputCount: number
     maxInputCount: number
 }
 
 export const SettingValue: React.FC<SettingValueType> = (props) => {
+    const dispatch = useDispatch()
 
     const onChangeMinInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        props.setMinCount(Number(e.currentTarget.value))
-        props.setIsActive(true)
+        dispatch(setMinCountAC(Number(e.currentTarget.value)))
+        dispatch(setIsActiveModeAC(true))
     }
     const onChangeMaxInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        props.setMaxCount(Number(e.currentTarget.value))
-        props.setIsActive(true)
+        dispatch(setMaxCountAC(Number(e.currentTarget.value)))
+        dispatch(setIsActiveModeAC(true))
     }
 
     return (
