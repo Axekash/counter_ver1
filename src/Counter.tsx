@@ -1,11 +1,10 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Button} from "./Button";
 import {Table} from "./Table";
 import {Setter} from './Setter';
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "./store/store";
-import {setCountAC, setMinCountAC} from "./store/count-reducer";
-import App from "./App";
+import {AppRootStateType, useAppDispatch} from "./store/store";
+import {setCountAC, setCountsTC} from "./store/count-reducer";
 import {setEditModeAC} from "./store/mode-reducer";
 
 export type CounterType = {
@@ -19,8 +18,12 @@ export const Counter: React.FC<CounterType> = () => {
 	const count = useSelector<AppRootStateType, number>(state => state.counter.count)
 	const editMode = useSelector<AppRootStateType, boolean>(state=> state.mode.editMode)
 	const isActive = useSelector<AppRootStateType, boolean>(state => state.mode.isActive)
-	const dispatch = useDispatch()
+	const dispatch = useAppDispatch()
 
+	useEffect(() => {
+		dispatch(setCountsTC())
+
+	}, [])
 
 	const increment = () => {
 		if (count < maxCount) {

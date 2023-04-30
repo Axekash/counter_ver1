@@ -6,7 +6,6 @@ type ChangeInputValueType = {
     minInputCount: number
     maxInputCount: number
     onChangeHandler: (value: ChangeEvent<HTMLInputElement>) => void
-
 }
 export const ChangeInputValue: React.FC<ChangeInputValueType> = (props) => {
 

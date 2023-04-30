@@ -20,6 +20,8 @@ export const Setter: React.FC<SetterType> = () => {
         dispatch(setMinCountAC(minCount))
         dispatch(setIsActiveModeAC(false))
         dispatch(setEditModeAC(!editMode))
+        localStorage.setItem('minCount', '' + minCount)
+        localStorage.setItem('maxCount', '' + maxCount)
     }
     let disabledButton = (minCount === maxCount || minCount > maxCount || minCount < 0 || maxCount < 0)
 
