@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import {Wrapper} from './Wrapper';
 import {Provider} from "react-redux";
 import {store} from "./store/store";
+import {Counter} from "./Counter";
 
 function App() {
 
@@ -10,7 +10,9 @@ function App() {
 	return (
 		<div className="App">
 			<Provider store={store}>
-				<Wrapper/>
+				<div className={'tableWrapper'}>
+					<Counter/>
+				</div>
 			</Provider>
 		</div>
 	);

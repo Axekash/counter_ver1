@@ -9,7 +9,7 @@ const initialState = {
 	count: 0
 }
 
-export const counterReducer = (state: InitialStateTypes = initialState, action: AllActionsCounterType): InitialStateTypes  => {
+export const counterReducer = (state: InitialStateTypes = initialState, action: AllActionsCounterType): InitialStateTypes => {
 	switch (action.type) {
 		case 'SET-MIN-COUNT': {
 			return {...state, minCount: action.payload.minCount}
@@ -20,23 +20,24 @@ export const counterReducer = (state: InitialStateTypes = initialState, action: 
 		case "SET-COUNT": {
 			return {...state, count: action.payload.count}
 		}
-		default: return state
+		default:
+			return state
 	}
 }
 
 //thunks
 
-export const setCountsTC = () => (dispatch: Dispatch) => {
-	let minCount = localStorage.getItem('minCount')
-	let maxCount = localStorage.getItem('maxCount')
-	if(minCount && maxCount) {
-		let minCount1 = JSON.parse(minCount)
-		let maxCount1 = JSON.parse(maxCount)
-		dispatch(setMinCountAC(+minCount1))
-		dispatch(setMaxCountAC(+maxCount1))
-		dispatch(setCountAC(+minCount1))
-	}
-}
+// export const setCountsTC = () => (dispatch: Dispatch) => {
+// 	let minCount = localStorage.getItem('minCount')
+// 	let maxCount = localStorage.getItem('maxCount')
+// 	if (minCount && maxCount) {
+// 		let minCount1 = JSON.parse(minCount)
+// 		let maxCount1 = JSON.parse(maxCount)
+// 		dispatch(setMinCountAC(+minCount1))
+// 		dispatch(setMaxCountAC(+maxCount1))
+// 		dispatch(setCountAC(+minCount1))
+// 	}
+// }
 
 //actionCreators
 
